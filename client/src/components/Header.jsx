@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../hook/useAuth";
 import { Link } from "react-router";
-import Loading from "./Loading";
 import toast from "react-hot-toast";
 
 const Header = () => {

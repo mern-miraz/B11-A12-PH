@@ -1,10 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Courses from "../pages/courses/Courses";
 import AddCourses from "../pages/AddCourse/AddCourses";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
+import { createBrowserRouter, RouterProvider } from "react-router";
 
 const router = createBrowserRouter([
   {
