@@ -66,7 +66,7 @@ const Header = () => {
                 Logout
               </button>
             </div>
-          ) : loading ? (
+          ) : user && loading ? (
             <span className="loading loading-dots loading-xl"></span>
           ) : (
             <>
