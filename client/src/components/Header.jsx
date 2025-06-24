@@ -9,30 +9,26 @@ const Header = () => {
 
   const handleLogout = () => {
     logOut()
-      .then(() => {
-        toast.success("Sign-out successful.");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => toast.success("Sign-out successful."))
+      .catch((error) => console.log(error));
   };
 
   const links = (
     <>
       <li>
-        <a href="/" className="hover:text-blue-500 transition">
+        <Link to="/" className="hover:text-blue-500 transition">
           Home
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="/courses" className="hover:text-blue-500 transition">
+        <Link to="/courses" className="hover:text-blue-500 transition">
           Courses
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="/add-courses" className="hover:text-blue-500 transition">
+        <Link to="/add-courses" className="hover:text-blue-500 transition">
           Add Courses
-        </a>
+        </Link>
       </li>
     </>
   );
@@ -42,7 +38,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Logo */}
         <div className="text-xl font-bold text-gray-800">
-          <a href="/">Course Management System</a>
+          <Link to="/">Course Management System</Link>
         </div>
 
         {/* Navigation Links */}
@@ -50,24 +46,26 @@ const Header = () => {
 
         {/* Auth Buttons */}
         <div className="flex items-center gap-3">
-          {user ? (
-            <div className="relative ">
+          {loading ? (
+            <span className="loading loading-dots loading-xl"></span>
+          ) : user ? (
+            <div className="relative">
               <img
                 className="h-12 w-12 rounded-full cursor-pointer border"
                 src={user?.photoURL}
-                alt="User Profile"
+                alt="User"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               />
               <button
-                onClick={handleLogout} // Replace with real logout logic
+                onClick={handleLogout}
                 className={`absolute right-0 mt-2 px-4 py-2 bg-red-500 text-white rounded shadow-md z-10 
-                  ${isDropdownOpen ? "block" : "hidden"}`}
+                ${
+                  isDropdownOpen ? "block" : "hidden"
+                } hover:bg-red-600 transition`}
               >
                 Logout
               </button>
             </div>
-          ) : user && loading ? (
-            <span className="loading loading-dots loading-xl"></span>
           ) : (
             <>
               <Link

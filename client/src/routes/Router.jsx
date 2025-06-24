@@ -5,6 +5,8 @@ import AddCourses from "../pages/AddCourse/AddCourses";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import CourseDetails from "../components/CourseDetails";
+import PrivateRouter from "../private/PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "add-courses",
-        Component: AddCourses,
+        element: (
+          <PrivateRouter>
+            <AddCourses />
+          </PrivateRouter>
+        ),
       },
       {
         path: "register",
@@ -30,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
+      },
+      {
+        path: "course-details/:id",
+        Component: CourseDetails,
       },
     ],
   },
